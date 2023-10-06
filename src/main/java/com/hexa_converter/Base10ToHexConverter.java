@@ -9,7 +9,12 @@ public class Base10ToHexConverter {
     private String convertedNumber;
 
     public Base10ToHexConverter(long number) {
-        this.convertedNumber = convertNumberInHexaLetters(getHexaValue(number));
+        if (number <= 0) {
+            this.convertedNumber = "I can`t convert negative number or 0";
+        } else {
+            this.convertedNumber = convertNumberInHexaLetters(getHexaValue(number));
+        }
+
     }
 
     public long largestPowerOf16(long number) {
@@ -33,25 +38,15 @@ public class Base10ToHexConverter {
 
         List<Long> hexavalues = new ArrayList<>();
 
-        long largestPower = largestPowerOf16(numberToConvert);
-        long hexaValue = numberToConvert / largestPower;
-        hexavalues.add(hexaValue);
+        if (numberToConvert < 16) {
+            hexavalues.add(numberToConvert);
+            return hexavalues;
+        }
 
-        long remainder = getRemmainder(numberToConvert, largestPower);
-
-        while (remainder != 0) {
-
-            powIndex = powIndex-- > 1l ? powIndex-- : 1l;
-
-            hexaValue = remainder / (long) Math.pow(16, powIndex);
-            remainder = remainder % (long) Math.pow(16, powIndex);
-            if (!(hexaValue == 0))
-                hexavalues.add(hexaValue);
-
-            if (remainder < (long) Math.pow(16, powIndex)) {
-                hexavalues.add(remainder);
-                remainder = 0;
-            }
+        while (numberToConvert != 0) {
+            long hexaValue = numberToConvert / largestPowerOf16(numberToConvert);
+            hexavalues.add(hexaValue);
+            numberToConvert = getRemmainder(numberToConvert, largestPowerOf16(numberToConvert));
         }
 
         return hexavalues;
