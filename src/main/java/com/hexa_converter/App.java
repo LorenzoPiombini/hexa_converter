@@ -7,16 +7,11 @@ package com.hexa_converter;
 public class App {
     public static void main(String[] args) {
 
-        for (long i = 0; i < 3000; i++) {
-            // long i = 32l;
+        for (long i = 0; i < 100000000; i++) {
+
             Base10ToHexConverter hexaConverter = new Base10ToHexConverter(i);
             System.out.println("decimal " + i + " = " + hexaConverter.getConvertedNumber() + " hexadecimal");
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
 
-                e.printStackTrace();
-            }
         }
     }
 
