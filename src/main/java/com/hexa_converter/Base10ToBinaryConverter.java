@@ -44,9 +44,11 @@ public class Base10ToBinaryConverter {
             builder.append("0");
         }
 
-        builder.replace(0, size, sb.toString());
+        builder.append(sb.toString());
 
-        return builder.reverse().toString();
+        builder.delete(0, size);
+
+        return builder.toString();
 
     }
 }
