@@ -7,12 +7,9 @@ package com.hexa_converter;
 public class App {
     public static void main(String[] args) {
 
-        for (long i = 0; i < 100000000; i++) {
+        Base10ToBinaryConverter converter = new Base10ToBinaryConverter(300);
+        System.out.println(converter.getBinaryResult());
 
-            Base10ToHexConverter hexaConverter = new Base10ToHexConverter(i);
-            System.out.println("decimal " + i + " = " + hexaConverter.getConvertedNumber() + " hexadecimal");
-
-        }
     }
 
 }
