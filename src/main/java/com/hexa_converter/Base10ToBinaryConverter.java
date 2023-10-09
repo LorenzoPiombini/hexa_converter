@@ -13,6 +13,7 @@ public class Base10ToBinaryConverter {
     private void convertToBinary(long number) {
         if (number == 0)
             binaryResult = "0000";
+
         List<Long> result = new ArrayList<>();
 
         while (number != 0) {
@@ -29,10 +30,23 @@ public class Base10ToBinaryConverter {
             sb.append(result.get(i));
         }
 
-        return sb.toString();
+        return outputFormatter(sb, result.size() - 1);
     }
 
     public String getBinaryResult() {
         return binaryResult;
+    }
+
+    private String outputFormatter(StringBuilder sb, int size) {
+        StringBuilder builder = new StringBuilder(Long.SIZE);
+
+        for (int i = 0; i < Long.SIZE; i++) {
+            builder.append("0");
+        }
+
+        builder.replace(0, size, sb.toString());
+
+        return builder.reverse().toString();
+
     }
 }
