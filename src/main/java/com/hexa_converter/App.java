@@ -6,7 +6,10 @@ package com.hexa_converter;
  */
 public class App {
     public static void main(String[] args) {
-        long n = 1;
+        long n = -67;
+
+        Base10ToHexConverter c = new Base10ToHexConverter(n);
+        System.out.println(n + " --> " + c.getConvertedNumber());
 
         Base10ToBinaryConverter converter = new Base10ToBinaryConverter(n);
         System.out.println(n + " -->  " + converter.getBinaryResult());
