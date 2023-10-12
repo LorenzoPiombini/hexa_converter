@@ -6,14 +6,12 @@ package com.hexa_converter;
  */
 public class App {
     public static void main(String[] args) {
-        long n = -67;
+        long n = -5059;
 
-        Base10ToHexConverter c = new Base10ToHexConverter(n);
-        System.out.println(n + " --> " + c.getConvertedNumber());
+        ConversionExecution execution = new ConversionExecution(n);
 
-        Base10ToBinaryConverter converter = new Base10ToBinaryConverter(n);
-        System.out.println(n + " -->  " + converter.getBinaryResult());
-        // System.out.println(~n + " --> " + converter.getOnesComplement());
+        System.out.println("the number " + n + " in hexa:" + execution.getHexa() + "\nthe same number in binary is: "
+                + execution.getBinary() + ".");
 
     }
 
